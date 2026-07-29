@@ -71,9 +71,9 @@ c_info "Etapa 4 — Pacotes (paru resolve repo + AUR)"
 PKG_AUDIO=(pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber polkit)
 PKG_HYPR=(hyprland hyprpaper hyprlock hypridle hyprpicker hyprpolkitagent
           xdg-desktop-portal-hyprland qt5-wayland qt6-wayland)
-PKG_SESSION=(networkmanager waybar wofi swaync kitty wl-clipboard cliphist grim
-             slurp thunar thunar-volman gvfs brightnessctl playerctl pavucontrol
-             network-manager-applet)
+PKG_SESSION=(networkmanager waybar wofi swaync kitty foot wl-clipboard cliphist
+             grim slurp thunar thunar-volman gvfs brightnessctl playerctl
+             pavucontrol network-manager-applet)
 PKG_FONTS=(ttf-jetbrains-mono-nerd ttf-firacode-nerd noto-fonts noto-fonts-emoji
            ttf-font-awesome)
 PKG_CLI=(zsh starship ripgrep fd bat eza fzf zoxide tmux lazygit git-delta
