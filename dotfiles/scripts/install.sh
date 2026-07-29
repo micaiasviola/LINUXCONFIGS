@@ -106,6 +106,14 @@ if pacman -Qq networkmanager >/dev/null 2>&1; then
     c_ok "NetworkManager ativo"
 fi
 
+# Em VM VMware: open-vm-tools ajusta a resolucao a janela + clipboard/drag-drop.
+# Sem ele o desktop costuma ficar maior que a area visivel (janelas fora da tela).
+if [[ "$VIRT" == "vmware" ]]; then
+    paru -S --needed open-vm-tools
+    sudo systemctl enable --now vmtoolsd vmware-vmblock-fuse
+    c_ok "open-vm-tools ativo (resize automatico da tela)"
+fi
+
 # ---------------------------------------------------------------- Etapa 5/6 --
 c_info "Etapa 5/6 — Aplicar dotfiles via GNU Stow (backup do que existir)"
 declare -A TARGETS=(
