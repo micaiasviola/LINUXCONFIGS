@@ -1,0 +1,55 @@
+/* SwayNC — Catppuccin Mocha */
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+}
+
+.control-center {
+  background: #1e1e2e;
+  border: 2px solid #313244;
+  border-radius: 14px;
+  color: #cdd6f4;
+}
+
+.notification-row .notification-background {
+  background: #313244;
+  border-radius: 12px;
+  margin: 6px;
+  padding: 4px;
+}
+
+.notification-row .notification-background .notification .notification-content {
+  color: #cdd6f4;
+  padding: 6px;
+}
+
+.notification-row .notification-background .close-button {
+  background: #f38ba8;
+  color: #1e1e2e;
+  border-radius: 8px;
+  margin: 4px;
+}
+
+.control-center .widget-title { color: #cdd6f4; margin: 8px; }
+.control-center .widget-title button {
+  background: #89b4fa;
+  color: #1e1e2e;
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.widget-dnd { color: #cdd6f4; margin: 8px; }
+.widget-dnd > switch {
+  background: #45475a;
+  border-radius: 12px;
+}
+.widget-dnd > switch:checked {
+  background: #a6e3a1;
+}
+
+.floating-notifications .notification-background {
+  background: #1e1e2e;
+  border: 2px solid #89b4fa;
+  border-radius: 12px;
+  margin: 8px;
+}

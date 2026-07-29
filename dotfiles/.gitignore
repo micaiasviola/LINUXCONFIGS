@@ -1,0 +1,12 @@
+# Artefatos locais / segredos
+*.bak
+*.bak-*
+wall.jpg
+wall.png
+.DS_Store
+
+# Nunca versionar chaves/segredos
+id_ed25519
+id_ed25519.pub
+*.pem
+.env

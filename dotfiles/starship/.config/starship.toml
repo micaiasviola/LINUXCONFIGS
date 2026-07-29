@@ -1,0 +1,97 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](mauve)\
+$os\
+$username\
+[](bg:blue fg:mauve)\
+$directory\
+[](bg:teal fg:blue)\
+$git_branch\
+$git_status\
+[](bg:green fg:teal)\
+$nodejs\
+$python\
+$rust\
+[](fg:green)\
+$fill\
+$cmd_duration\
+$time\
+$line_break\
+$character"""
+
+palette = 'catppuccin_mocha'
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+mauve = "#cba6f7"
+blue = "#89b4fa"
+teal = "#94e2d5"
+green = "#a6e3a1"
+peach = "#fab387"
+red = "#f38ba8"
+text = "#cdd6f4"
+base = "#1e1e2e"
+surface0 = "#313244"
+
+[os]
+disabled = false
+style = "bg:mauve fg:base"
+
+[os.symbols]
+Arch = "󰣇 "
+Linux = " "
+Windows = " "
+
+[username]
+show_always = false
+style_user = "bg:mauve fg:base"
+format = '[ $user ]($style)'
+
+[directory]
+style = "bg:blue fg:base"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "bg:teal fg:base"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:teal fg:base"
+format = '[$all_status$ahead_behind ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:green fg:base"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = ""
+style = "bg:green fg:base"
+format = '[ $symbol ($version)( $virtualenv) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:green fg:base"
+format = '[ $symbol ($version) ]($style)'
+
+[fill]
+symbol = " "
+
+[cmd_duration]
+min_time = 500
+style = "fg:peach"
+format = '[  $duration ]($style)'
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "fg:text"
+format = '[ $time ]($style)'
+
+[character]
+success_symbol = '[❯](bold green)'
+error_symbol = '[❯](bold red)'

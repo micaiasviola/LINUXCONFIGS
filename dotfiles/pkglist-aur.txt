@@ -1,0 +1,3 @@
+# Placeholder. O install.sh regenera este arquivo no Arch com:
+#   pacman -Qqem > pkglist-aur.txt
+# (lista os pacotes do AUR/foreign instalados)
