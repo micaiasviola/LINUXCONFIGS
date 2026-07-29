@@ -77,7 +77,7 @@ PKG_SESSION=(networkmanager waybar wofi swaync kitty wl-clipboard cliphist grim
 PKG_FONTS=(ttf-jetbrains-mono-nerd ttf-firacode-nerd noto-fonts noto-fonts-emoji
            ttf-font-awesome)
 PKG_CLI=(zsh starship ripgrep fd bat eza fzf zoxide tmux lazygit git-delta
-         fastfetch btop unzip wget curl jq)
+         fastfetch btop unzip wget curl jq nano)
 PKG_DEV=(git github-cli fnm pyenv uv docker docker-compose docker-buildx
          visual-studio-code-bin)
 PKG_THEME=(catppuccin-gtk-theme-mocha papirus-icon-theme catppuccin-cursors-mocha
