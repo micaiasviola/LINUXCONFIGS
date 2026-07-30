@@ -18,7 +18,7 @@ KB_LAYOUT="br"                              # "br" (ABNT2) ou "us"
 # ----------------------------------------------------------------------------
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-STOW_PKGS=(hypr waybar wofi swaync kitty zsh starship)
+STOW_PKGS=(hypr waybar wofi swaync kitty foot zsh starship)
 TS="$(date +%Y%m%d-%H%M%S)"
 
 c_info() { printf '\033[1;34m::\033[0m %s\n' "$*"; }
@@ -79,7 +79,7 @@ PKG_FONTS=(ttf-jetbrains-mono-nerd ttf-firacode-nerd noto-fonts noto-fonts-emoji
 PKG_CLI=(zsh starship ripgrep fd bat eza fzf zoxide tmux lazygit git-delta
          fastfetch btop unzip wget curl jq nano)
 PKG_DEV=(git github-cli fnm pyenv uv docker docker-compose docker-buildx
-         visual-studio-code-bin)
+         visual-studio-code-bin google-chrome)
 PKG_THEME=(catppuccin-gtk-theme-mocha papirus-icon-theme catppuccin-cursors-mocha
            nwg-look qt6ct kvantum)
 
