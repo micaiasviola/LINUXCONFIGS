@@ -72,8 +72,9 @@ PKG_AUDIO=(pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber polki
 PKG_HYPR=(hyprland hyprpaper hyprlock hypridle hyprpicker hyprpolkitagent
           xdg-desktop-portal-hyprland qt5-wayland qt6-wayland)
 PKG_SESSION=(networkmanager waybar wofi swaync kitty foot wl-clipboard cliphist
-             grim slurp thunar thunar-volman gvfs brightnessctl playerctl
-             pavucontrol network-manager-applet)
+             grim slurp hyprshot thunar thunar-volman thunar-archive-plugin
+             xarchiver gvfs brightnessctl playerctl pavucontrol
+             network-manager-applet wlogout bluez bluez-utils blueman)
 PKG_FONTS=(ttf-jetbrains-mono-nerd ttf-firacode-nerd noto-fonts noto-fonts-emoji
            ttf-font-awesome)
 PKG_CLI=(zsh starship ripgrep fd bat eza fzf zoxide tmux lazygit git-delta
@@ -81,7 +82,7 @@ PKG_CLI=(zsh starship ripgrep fd bat eza fzf zoxide tmux lazygit git-delta
 PKG_DEV=(git github-cli fnm pyenv uv docker docker-compose docker-buildx
          visual-studio-code-bin google-chrome)
 PKG_THEME=(catppuccin-gtk-theme-mocha papirus-icon-theme catppuccin-cursors-mocha
-           nwg-look qt6ct kvantum)
+           nwg-look nwg-displays qt6ct kvantum waypaper swww wallust)
 
 ALL=("${PKG_AUDIO[@]}" "${PKG_HYPR[@]}" "${PKG_SESSION[@]}" "${PKG_FONTS[@]}"
      "${PKG_CLI[@]}" "${PKG_DEV[@]}" "${PKG_THEME[@]}")
@@ -112,6 +113,12 @@ if [[ "$VIRT" == "vmware" ]]; then
     paru -S --needed open-vm-tools
     sudo systemctl enable --now vmtoolsd vmware-vmblock-fuse
     c_ok "open-vm-tools ativo (resize automatico da tela)"
+fi
+
+# Bluetooth (util no bare metal; inocuo na VM)
+if pacman -Qq bluez >/dev/null 2>&1; then
+    sudo systemctl enable --now bluetooth
+    c_ok "bluetooth habilitado"
 fi
 
 # ---------------------------------------------------------------- Etapa 5/6 --
