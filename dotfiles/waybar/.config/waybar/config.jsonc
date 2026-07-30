@@ -1,53 +1,53 @@
 {
-  // Sem "output" -> a barra aparece em TODAS as telas (ideal p/ 3 monitores).
+  // Barra estilo "barra de tarefas do Windows", embaixo, mas Catppuccin.
+  // Sem "output" -> aparece em TODAS as telas (bom p/ 3 monitores).
   "layer": "top",
-  "position": "top",
-  "height": 34,
-  "spacing": 6,
-  "margin-top": 4,
+  "position": "bottom",
+  "height": 42,
+  "spacing": 4,
+  "margin-bottom": 6,
   "margin-left": 8,
   "margin-right": 8,
 
-  "modules-left": ["hyprland/workspaces", "hyprland/submap"],
-  "modules-center": ["hyprland/window"],
-  "modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "battery", "clock"],
+  "modules-left": ["custom/start", "hyprland/workspaces"],
+  "modules-center": ["wlr/taskbar"],
+  "modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "battery", "custom/notification", "clock"],
 
+  // Botao "Iniciar" -> abre o menu de apps (wofi)
+  "custom/start": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "wofi --show drun"
+  },
+
+  // Areas de trabalho (como os "desktops virtuais" do Windows)
   "hyprland/workspaces": {
     "on-click": "activate",
     "format": "{icon}",
-    "format-icons": {
-      "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
-      "6": "6", "7": "7", "8": "8", "9": "9", "10": "10",
-      "urgent": "",
-      "default": ""
-    },
+    "format-icons": { "default": "", "active": "", "urgent": "" },
     "persistent-workspaces": { "*": 5 }
   },
 
-  "hyprland/window": {
-    "format": "{title}",
-    "max-length": 60,
-    "separate-outputs": true
+  // Apps abertos com icone (clicar = focar, botao do meio = fechar)
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 20,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "all-outputs": true
   },
 
   "clock": {
-    "format": " {:%H:%M}",
-    "format-alt": " {:%a, %d/%m/%Y}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    "format": " {:%H:%M  %d/%m}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "format-alt": " {:%A, %d de %B de %Y}"
   },
 
-  "cpu": {
-    "format": " {usage}%",
-    "interval": 2
-  },
-
-  "memory": {
-    "format": " {percentage}%",
-    "interval": 5
-  },
+  "cpu": { "format": " {usage}%", "interval": 2 },
+  "memory": { "format": " {percentage}%", "interval": 5 },
 
   "battery": {
-    // Some sozinho quando nao ha bateria (desktop/VM).
     "states": { "warning": 30, "critical": 15 },
     "format": "{icon} {capacity}%",
     "format-charging": " {capacity}%",
@@ -57,23 +57,41 @@
 
   "network": {
     "format-wifi": " {signalStrength}%",
-    "format-ethernet": " {ipaddr}",
-    "format-linked": " (sem IP)",
-    "format-disconnected": "⚠ off",
+    "format-ethernet": " ",
+    "format-disconnected": "⚠",
     "tooltip-format": "{ifname}: {ipaddr}",
     "on-click": "nm-connection-editor"
   },
 
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "format-muted": " mudo",
+    "format-muted": " ",
     "format-icons": { "default": ["", "", ""] },
     "on-click": "pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
 
-  "tray": {
-    "icon-size": 16,
-    "spacing": 8
+  "tray": { "icon-size": 16, "spacing": 8 },
+
+  // Central de notificacoes (badge + clique abre/fecha)
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='#f38ba8'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   }
 }
