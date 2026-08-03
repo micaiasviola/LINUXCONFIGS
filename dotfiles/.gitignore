@@ -5,15 +5,23 @@ wall.jpg
 wall.png
 .DS_Store
 
-# Rascunhos de configuracao que CONTRADIZEM a maquina.
+# Rascunho fora do padrao stow.
 #
-# Aqui vivia um .config/hypr/hyprland.conf de 15 linhas, e ele nao pode ser
-# publicado: nesta maquina NAO existe hyprland.conf ativo - a configuracao e
-# em Lua, no hyprland.lua. Como este repositorio e de GUIAS, um hyprland.conf
-# versionado ensina justamente o caminho errado, e quem seguir vai esbarrar
-# no hyprctl respondendo erro de sintaxe Lua.
+# Este repositorio instala com GNU Stow (veja scripts/install.sh): cada
+# PACOTE e uma pasta daqui - hypr/, waybar/, kitty/ ... - e dentro dele o
+# caminho espelha o destino. O hyprland.conf de verdade e o
 #
-# Rascunho local pode existir; versionado, nao.
+#     hypr/.config/hypr/hyprland.conf     (187 linhas, versionado)
+#
+# que o stow transforma em ~/.config/hypr/hyprland.conf.
+#
+# O que esta regra barra e um .config/ solto AQUI na raiz, fora de qualquer
+# pacote. O stow nunca o instala - so os pacotes listados no install.sh sao
+# processados -, entao ele nao configura nada; serve apenas para alguem
+# abrir o arquivo errado achando que e o config. Ja apareceu um assim, com
+# 15 linhas, duplicando mal o que o de 187 faz.
+#
+# Config novo vai DENTRO de um pacote, nunca na raiz.
 /.config/
 
 # Nunca versionar chaves/segredos
