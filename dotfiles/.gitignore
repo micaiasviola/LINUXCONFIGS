@@ -5,6 +5,17 @@ wall.jpg
 wall.png
 .DS_Store
 
+# Rascunhos de configuracao que CONTRADIZEM a maquina.
+#
+# Aqui vivia um .config/hypr/hyprland.conf de 15 linhas, e ele nao pode ser
+# publicado: nesta maquina NAO existe hyprland.conf ativo - a configuracao e
+# em Lua, no hyprland.lua. Como este repositorio e de GUIAS, um hyprland.conf
+# versionado ensina justamente o caminho errado, e quem seguir vai esbarrar
+# no hyprctl respondendo erro de sintaxe Lua.
+#
+# Rascunho local pode existir; versionado, nao.
+/.config/
+
 # Nunca versionar chaves/segredos
 id_ed25519
 id_ed25519.pub
